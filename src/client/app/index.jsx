@@ -9,7 +9,6 @@ class App extends React.Component {
     return (
       <div>
         <MainMenu />
-        <br/>
         <LikeComponent />
       </div>
     );
