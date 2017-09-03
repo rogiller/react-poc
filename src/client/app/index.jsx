@@ -1,13 +1,16 @@
 import React from 'react';
 import {render} from 'react-dom';
-import AwesomeComponent from './AwesomeComponent.jsx';
+import MainMenu from './MainMenu.jsx';
+import LikeComponent from './LikeComponent.jsx';
+
 
 class App extends React.Component {
   render () {
     return (
       <div>
-        <p> Hello React!</p>;
-        <AwesomeComponent />
+        <MainMenu />
+        <br/>
+        <LikeComponent />
       </div>
     );
   }
