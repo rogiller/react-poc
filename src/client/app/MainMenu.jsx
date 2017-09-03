@@ -4,8 +4,7 @@ class MainMenu extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {likesCount : 0};
-        //this.onLike = this.onLike.bind(this);
+        //this.state = {likesCount : 0};
     }
 
     render() {
