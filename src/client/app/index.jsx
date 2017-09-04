@@ -5,12 +5,24 @@ import AppBar from "material-ui/AppBar";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
+import ReactDataGrid from 'react-data-grid';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false};
+
+    this.state = {
+        open: false,
+        columns: [
+            { key: 'id', name: 'ID' },
+            { key: 'title', name: 'Title' },
+            { key: 'count', name: 'Count' }]
+    };
+  }
+
+  rowGetter(i){
+    return { id: i, title: 'Title ' + i, count: i * 1000 }
   }
 
   render () {
@@ -27,6 +39,11 @@ class App extends React.Component {
                 <AppBar title="HOME" titleStyle={{textAlign: "center"}}
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
                         onLeftIconButtonTouchTap={() => { this.setState({open: !this.state.open}) }}/>
+
+                <ReactDataGrid
+                    columns={this.state.columns}
+                    rowGetter={this.rowGetter}
+                    rowsCount={5}/>
 
                 <br/>
                 <br/>
