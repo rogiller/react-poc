@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class MainMenu extends React.Component {
 
@@ -11,9 +12,15 @@ class MainMenu extends React.Component {
         return (
             <div>
                 <div>
-                    <button>Home</button>
-                    <button>Help</button>
-                    <button>About</button>
+                    <RaisedButton label="Flex" />
+                    <RaisedButton label="Contacts" />
+                    <RaisedButton label="Financials" />
+                    <RaisedButton label="Inventory" />
+                    <RaisedButton label="Projects" />
+                    <RaisedButton label="Reports" />
+                    <RaisedButton label="System Settings" />
+                    <RaisedButton label="Warehouse" />
+                    <RaisedButton label="Help" />
                 </div>
             </div>
         );

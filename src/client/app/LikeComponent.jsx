@@ -1,4 +1,6 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import Badge from 'material-ui/Badge';
 
 class LikeComponent extends React.Component {
 
@@ -16,7 +18,10 @@ class LikeComponent extends React.Component {
   render() {
     return (
       <div>
-        <div><button onClick={this.onLike}>Like Me</button><span>{this.state.likesCount}</span></div>
+        <div>
+          <RaisedButton onClick={this.onLike}>Like Me</RaisedButton>
+          <Badge badgeContent={this.state.likesCount} primary={true}/>
+        </div>
       </div>
     );
   }
