@@ -1,6 +1,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Badge from 'material-ui/Badge';
+import TextField from 'material-ui/TextField';
 
 class LikeComponent extends React.Component {
 
@@ -19,8 +20,11 @@ class LikeComponent extends React.Component {
     return (
       <div>
         <div>
-          <RaisedButton onClick={this.onLike}>Like Me</RaisedButton>
+          <RaisedButton onClick={this.onLike} secondary={true}>Like Me</RaisedButton>
           <Badge badgeContent={this.state.likesCount} primary={true}/>
+        </div>
+        <div>
+          <TextField value={this.state.likesCount}/>
         </div>
       </div>
     );
