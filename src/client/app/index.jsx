@@ -43,7 +43,7 @@ class App extends React.Component {
                 <ReactDataGrid
                     columns={this.state.columns}
                     rowGetter={this.rowGetter}
-                    rowsCount={5}/>
+                    rowsCount={10}/>
 
                 <br/>
                 <br/>
