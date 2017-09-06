@@ -6,6 +6,12 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 import ReactDataGrid from 'react-data-grid';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+
+
+BigCalendar.momentLocalizer(moment);
+
 
 class App extends React.Component {
 
@@ -40,14 +46,21 @@ class App extends React.Component {
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
                         onLeftIconButtonTouchTap={() => { this.setState({open: !this.state.open}) }}/>
 
+                <BigCalendar
+                    events={[{ title: 'First Event Ever', startDate: '2017-09-06', endDate: '2017-09-15' }]}
+                    startAccessor='startDate'
+                    endAccessor='endDate'
+                />
+
+
+                <br/>
+                <br/>
+
                 <ReactDataGrid
                     columns={this.state.columns}
                     rowGetter={this.rowGetter}
                     rowsCount={10}/>
 
-                <br/>
-                <br/>
-                <br/>
                 <br/>
                 <br/>
 
