@@ -1,6 +1,6 @@
 import React from "react";
 import {render} from "react-dom";
-import LikeComponent from "./LikeComponent.jsx";
+import LikeComponent from "./LikeComponent";
 import AppBar from "material-ui/AppBar";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Drawer from "material-ui/Drawer";
