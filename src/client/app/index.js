@@ -39,35 +39,38 @@ class App extends React.Component {
             <div>
 
                 <Drawer open={this.state.open}>
-                    <MenuItem onClick={() => { this.setState({open: false}) }}>HOME</MenuItem>
-                    <MenuItem onClick={() => { this.setState({open: false}) }}>CONTACTS</MenuItem>
-                    <MenuItem onClick={() => { this.setState({open: false}) }}>INVENTORY</MenuItem>
-                    <MenuItem onClick={() => { this.setState({open: false}) }}>WAREHOUSE</MenuItem>
+                    <MenuItem onClick={() => { this.setState({open: false, showView: 'none'}) }}>HOME</MenuItem>
+                    <MenuItem onClick={() => { this.setState({open: false, showView: 'grid'}) }}>GRID</MenuItem>
+                    <MenuItem onClick={() => { this.setState({open: false, showView: 'calendar'}) }}>CALENDAR</MenuItem>
+                    <MenuItem onClick={() => { this.setState({open: false, showView: 'jazz'}) }}>JAZZ</MenuItem>
                 </Drawer>
 
                 <AppBar title="HOME" titleStyle={{textAlign: "center"}}
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
                         onLeftIconButtonTouchTap={() => { this.setState({open: !this.state.open}) }}/>
 
-                <ReactDataGrid
+                { this.state.showView === 'grid' ?
+                    <ReactDataGrid
                     columns={this.state.columns}
                     rowGetter={App.rowGetter}
-                    rowsCount={10}/>
+                    rowsCount={10}/> : null
+                }
 
-                <br/>
-                <br/>
+                { this.state.showView === 'calendar' ?
+                    <BigCalendar
+                        events={[{title: 'First Event Ever', startDate: '2017-09-06', endDate: '2017-09-15'}]}
+                        startAccessor='startDate'
+                        endAccessor='endDate'
+                    /> : null
+                }
 
-                <BigCalendar
-                    events={[{ title: 'First Event Ever', startDate: '2017-09-06', endDate: '2017-09-15' }]}
-                    startAccessor='startDate'
-                    endAccessor='endDate'
-                />
+                { this.state.showView === 'jazz' ?
+                    <MainMenu/> : null
+                }
 
-                <br/>
-                <br/>
-
-                <MainMenu/>
-                <LikeComponent />
+                { this.state.showView === 'jazz' ?
+                    <LikeComponent /> : null
+                }
 
             </div>
         </MuiThemeProvider>
