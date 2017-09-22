@@ -29,7 +29,7 @@ class App extends React.Component {
       BigCalendar.momentLocalizer(moment);
   }
 
-  rowGetter(i){
+  static rowGetter(i){
     return { id: i, title: 'Title ' + i, count: i * 1000 }
   }
 
@@ -37,6 +37,7 @@ class App extends React.Component {
     return (
         <MuiThemeProvider>
             <div>
+
                 <Drawer open={this.state.open}>
                     <MenuItem onClick={() => { this.setState({open: false}) }}>HOME</MenuItem>
                     <MenuItem>CONTACTS</MenuItem>
@@ -50,7 +51,7 @@ class App extends React.Component {
 
                 <ReactDataGrid
                     columns={this.state.columns}
-                    rowGetter={this.rowGetter}
+                    rowGetter={App.rowGetter}
                     rowsCount={10}/>
 
                 <br/>
