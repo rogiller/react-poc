@@ -11,6 +11,7 @@ import moment from 'moment';
 
 //CSS imports
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import MainMenu from "./MainMenu";
 
 class App extends React.Component {
 
@@ -64,7 +65,9 @@ class App extends React.Component {
                 <br/>
                 <br/>
 
+                <MainMenu/>
                 <LikeComponent />
+
             </div>
         </MuiThemeProvider>
     );
