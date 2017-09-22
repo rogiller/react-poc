@@ -9,9 +9,8 @@ import ReactDataGrid from 'react-data-grid';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
-
-BigCalendar.momentLocalizer(moment);
-
+//CSS imports
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 class App extends React.Component {
 
@@ -25,6 +24,8 @@ class App extends React.Component {
             { key: 'title', name: 'Title' },
             { key: 'count', name: 'Count' }]
     };
+
+      BigCalendar.momentLocalizer(moment);
   }
 
   rowGetter(i){
@@ -46,20 +47,19 @@ class App extends React.Component {
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
                         onLeftIconButtonTouchTap={() => { this.setState({open: !this.state.open}) }}/>
 
+                <ReactDataGrid
+                    columns={this.state.columns}
+                    rowGetter={this.rowGetter}
+                    rowsCount={10}/>
+
+                <br/>
+                <br/>
+
                 <BigCalendar
                     events={[{ title: 'First Event Ever', startDate: '2017-09-06', endDate: '2017-09-15' }]}
                     startAccessor='startDate'
                     endAccessor='endDate'
                 />
-
-
-                <br/>
-                <br/>
-
-                <ReactDataGrid
-                    columns={this.state.columns}
-                    rowGetter={this.rowGetter}
-                    rowsCount={10}/>
 
                 <br/>
                 <br/>

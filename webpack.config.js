@@ -12,11 +12,12 @@ var config = {
   },
   module : {
     loaders : [
-      {test : /\.js?/, include : APP_DIR, loader : 'babel-loader'}
+      {test : /\.js?/, include : APP_DIR, loader : 'babel-loader'},
+      {test : /\.css$/, loaders: ['style-loader', 'css-loader']}
     ]
   },
   devServer: {
-    contentBase: './src/client'
+    //contentBase: './src/client'
   }
 };
 
