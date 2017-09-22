@@ -18,6 +18,9 @@ var config = {
         loader : 'babel-loader'
       }
     ]
+  },
+  devServer: {
+    contentBase: './src/client'
   }
 };
 
