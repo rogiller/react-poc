@@ -19,10 +19,8 @@ class LikeComponent extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <RaisedButton onClick={this.onLike} primary={true}>Like Me</RaisedButton>
-          <Badge badgeContent={this.state.likesCount} primary={true}/>
-        </div>
+        <RaisedButton onClick={this.onLike} primary={true}>Like Me</RaisedButton>
+        <Badge badgeContent={this.state.likesCount} primary={true}/>
       </div>
     );
   }

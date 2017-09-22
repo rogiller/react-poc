@@ -40,9 +40,9 @@ class App extends React.Component {
 
                 <Drawer open={this.state.open}>
                     <MenuItem onClick={() => { this.setState({open: false}) }}>HOME</MenuItem>
-                    <MenuItem>CONTACTS</MenuItem>
-                    <MenuItem>INVENTORY</MenuItem>
-                    <MenuItem>WAREHOUSE</MenuItem>
+                    <MenuItem onClick={() => { this.setState({open: false}) }}>CONTACTS</MenuItem>
+                    <MenuItem onClick={() => { this.setState({open: false}) }}>INVENTORY</MenuItem>
+                    <MenuItem onClick={() => { this.setState({open: false}) }}>WAREHOUSE</MenuItem>
                 </Drawer>
 
                 <AppBar title="HOME" titleStyle={{textAlign: "center"}}
