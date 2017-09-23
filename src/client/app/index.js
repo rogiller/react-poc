@@ -100,11 +100,11 @@ class App extends React.Component {
                 }
 
                 { this.state.showView === 'jazz' &&
-                    <DatePicker hintText="Date Picker Example" onChange={this.onTimePickChange}/>
+                    <DatePicker hintText="Date Picker Example" onChange={this.onTimePickChange} autoOk={true}/>
                 }
 
                 { this.state.showView === 'jazz' &&
-                    <TimePicker hintText="Time Picker Example" minutesStep={5} onChange={this.onTimePickChange}/>
+                    <TimePicker hintText="Time Picker Example" minutesStep={5} onChange={this.onTimePickChange} autoOk={true}/>
                 }
 
                 { this.state.showView === 'jazz' &&
