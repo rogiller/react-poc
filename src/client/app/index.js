@@ -8,7 +8,7 @@ import MenuItem from "material-ui/MenuItem";
 import ReactDataGrid from 'react-data-grid';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
-import {DatePicker, Snackbar, TextField, TimePicker} from "material-ui";
+import {Card, CardMedia, DatePicker, Snackbar, TextField, TimePicker} from "material-ui";
 import MainMenu from "./MainMenu";
 
 //CSS imports
@@ -22,6 +22,7 @@ class App extends React.Component {
 
     this.state = {
         open: false,
+        showView: 'home',
         timePick: null,
         columns: [
             { key: 'id', name: 'ID' },
@@ -49,7 +50,7 @@ class App extends React.Component {
             <div>
 
                 <Drawer open={this.state.open}>
-                    <MenuItem onClick={() => { this.setState({open: false, showView: 'none'}) }}>HOME</MenuItem>
+                    <MenuItem onClick={() => { this.setState({open: false, showView: 'home'}) }}>HOME</MenuItem>
                     <MenuItem onClick={() => { this.setState({open: false, showView: 'grid'}) }}>GRID</MenuItem>
                     <MenuItem onClick={() => { this.setState({open: false, showView: 'calendar'}) }}>CALENDAR</MenuItem>
                     <MenuItem onClick={() => { this.setState({open: false, showView: 'jazz'}) }}>JAZZ</MenuItem>
@@ -64,6 +65,14 @@ class App extends React.Component {
                 <AppBar title="HOME" titleStyle={{textAlign: "center"}}
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
                         onLeftIconButtonTouchTap={() => { this.setState({open: !this.state.open}) }}/>
+
+                { this.state.showView === 'home' &&
+                    <Card>
+                        <CardMedia>
+                            <img src="https://cdn-images-1.medium.com/max/1800/1*HSisLuifMO6KbLfPOKtLow.jpeg" alt="" />
+                        </CardMedia>
+                    </Card>
+                }
 
                 { this.state.showView === 'grid' &&
                     <ReactDataGrid
