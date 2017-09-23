@@ -8,7 +8,7 @@ import MenuItem from "material-ui/MenuItem";
 import ReactDataGrid from 'react-data-grid';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
-import {DatePicker, TextField, TimePicker} from "material-ui";
+import {DatePicker, Snackbar, TextField, TimePicker} from "material-ui";
 import MainMenu from "./MainMenu";
 
 //CSS imports
@@ -36,6 +36,7 @@ class App extends React.Component {
 
   onTimePickChange(event, newValue){
       this.setState({timePick: newValue})
+      this.setState({openSnack: true, snackMessage: `Date/Time changed to: ${newValue}` })
   }
 
   static rowGetter(i){
@@ -53,6 +54,12 @@ class App extends React.Component {
                     <MenuItem onClick={() => { this.setState({open: false, showView: 'calendar'}) }}>CALENDAR</MenuItem>
                     <MenuItem onClick={() => { this.setState({open: false, showView: 'jazz'}) }}>JAZZ</MenuItem>
                 </Drawer>
+
+                <Snackbar
+                    open={this.state.openSnack}
+                    message={this.state.snackMessage}
+                    autoHideDuration={4000}
+                />
 
                 <AppBar title="HOME" titleStyle={{textAlign: "center"}}
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
@@ -82,7 +89,7 @@ class App extends React.Component {
                 }
 
                 { this.state.showView === 'jazz' &&
-                    <DatePicker hintText="Date Picker Example" />
+                    <DatePicker hintText="Date Picker Example" onChange={this.onTimePickChange}/>
                 }
 
                 { this.state.showView === 'jazz' &&
