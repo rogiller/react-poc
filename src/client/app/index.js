@@ -8,7 +8,7 @@ import MenuItem from "material-ui/MenuItem";
 import ReactDataGrid from 'react-data-grid';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
-import {Card, CardMedia, DatePicker, Snackbar, TextField, TimePicker} from "material-ui";
+import {Card, CardMedia, CardTitle, DatePicker, Snackbar, TextField, TimePicker} from "material-ui";
 import MainMenu from "./MainMenu";
 
 //CSS imports
@@ -68,7 +68,9 @@ class App extends React.Component {
 
                 { this.state.showView === 'home' &&
                     <Card>
-                        <CardMedia>
+                        <CardMedia
+                            overlay={<CardTitle title="A Taste of React" subtitle="react proof of concept app" />}
+                        >
                             <img src="https://cdn-images-1.medium.com/max/1800/1*HSisLuifMO6KbLfPOKtLow.jpeg" alt="" />
                         </CardMedia>
                     </Card>
