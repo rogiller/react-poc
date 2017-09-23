@@ -17,7 +17,8 @@ var config = {
     ]
   },
   devServer: {
-    contentBase: './src/client'
+    contentBase: './src/client',
+    publicPath: "/public/"
   }
 };
 
