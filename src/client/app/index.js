@@ -58,39 +58,39 @@ class App extends React.Component {
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
                         onLeftIconButtonTouchTap={() => { this.setState({open: !this.state.open}) }}/>
 
-                { this.state.showView === 'grid' ?
+                { this.state.showView === 'grid' &&
                     <ReactDataGrid
                     columns={this.state.columns}
                     rowGetter={App.rowGetter}
-                    rowsCount={10}/> : null
+                    rowsCount={10}/>
                 }
 
-                { this.state.showView === 'calendar' ?
+                { this.state.showView === 'calendar' &&
                     <BigCalendar
                         events={[{title: 'First Event Ever', startDate: '2017-09-06', endDate: '2017-09-15'}]}
                         startAccessor='startDate'
                         endAccessor='endDate'
-                    /> : null
+                    />
                 }
 
-                { this.state.showView === 'jazz' ?
-                    <MainMenu/> : null
+                { this.state.showView === 'jazz' &&
+                    <MainMenu/>
                 }
 
-                { this.state.showView === 'jazz' ?
-                    <LikeComponent /> : null
+                { this.state.showView === 'jazz' &&
+                    <LikeComponent />
                 }
 
-                { this.state.showView === 'jazz' ?
-                    <DatePicker hintText="Date Picker Example" /> : null
+                { this.state.showView === 'jazz' &&
+                    <DatePicker hintText="Date Picker Example" />
                 }
 
-                { this.state.showView === 'jazz' ?
-                    <TimePicker hintText="Time Picker Example" minutesStep={5} onChange={this.onTimePickChange}/> : null
+                { this.state.showView === 'jazz' &&
+                    <TimePicker hintText="Time Picker Example" minutesStep={5} onChange={this.onTimePickChange}/>
                 }
 
-                { this.state.showView === 'jazz' ?
-                    <TextField value={this.state.timePick}/> : null
+                { this.state.showView === 'jazz' &&
+                    <TextField value={this.state.timePick}/>
                 }
 
             </div>
