@@ -1,7 +1,6 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Badge from 'material-ui/Badge';
-import TextField from 'material-ui/TextField';
 
 class LikeComponent extends React.Component {
 
