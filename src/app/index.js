@@ -22,6 +22,8 @@ class App extends React.Component {
 
     this.state = {
         open: false,
+        openSnack: false,
+        snackMessage: '',
         showView: 'home',
         timePick: null,
         columns: [
