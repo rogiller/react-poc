@@ -8,8 +8,9 @@ import MenuItem from "material-ui/MenuItem";
 import ReactDataGrid from 'react-data-grid';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
-import {Card, CardMedia, CardTitle, DatePicker, Snackbar, TextField, TimePicker} from "material-ui";
+import {Card, CardMedia, CardTitle, DatePicker, RaisedButton, Snackbar, TextField, TimePicker} from "material-ui";
 import MainMenu from "./MainMenu";
+import axios from "axios";
 
 //CSS imports
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -26,15 +27,32 @@ class App extends React.Component {
         snackMessage: '',
         showView: 'home',
         timePick: null,
+        dataGridRows: [],
         columns: [
-            { key: 'id', name: 'ID' },
-            { key: 'title', name: 'Title' },
-            { key: 'count', name: 'Count' }]
+            { key: 'id', name: 'ID', width: 100 },
+            { key: 'joke', name: 'Joke' }]
     };
 
     BigCalendar.momentLocalizer(moment);
 
     this.onTimePickChange = this.onTimePickChange.bind(this);
+    this.rowGetter = this.rowGetter.bind(this);
+    this.loadDataGridData = this.loadDataGridData.bind(this);
+
+    this.loadDataGridData();
+  }
+
+  loadDataGridData(){
+
+      var me = this;
+
+      axios.get('http://api.icndb.com/jokes/random/10?limitTo=[nerdy]')
+          .then(function (response) {
+              me.setState({dataGridRows: response.data.value})
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
   }
 
   onTimePickChange(event, newValue){
@@ -42,8 +60,8 @@ class App extends React.Component {
       this.setState({openSnack: true, snackMessage: `Date/Time changed to: ${newValue}` })
   }
 
-  static rowGetter(i){
-    return { id: i, title: 'Title ' + i, count: i * 1000 }
+  rowGetter(i){
+    return this.state.dataGridRows[i];
   }
 
   render () {
@@ -81,8 +99,12 @@ class App extends React.Component {
                 { this.state.showView === 'grid' &&
                     <ReactDataGrid
                     columns={this.state.columns}
-                    rowGetter={App.rowGetter}
+                    rowGetter={this.rowGetter}
                     rowsCount={10}/>
+                }
+
+                { this.state.showView === 'grid' &&
+                    <RaisedButton onClick={this.loadDataGridData} primary={true}>Reload Data</RaisedButton>
                 }
 
                 { this.state.showView === 'calendar' &&
